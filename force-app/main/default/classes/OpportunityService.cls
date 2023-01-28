@@ -21,14 +21,15 @@ public with sharing class OpportunityService {
     public static void pingAccountNumberRollup(Opportunity[] oppList) {
         Set<Id> accIdSet = new Set<Id>();
         for (Opportunity opp : oppList) {
-            if (Trigger.isInsert || opp.Random_Number__c != Trigger.oldMap.get(opp.Id).get('Random_Number__c')) {
-                if (opp.AccountId != null) {
-                    accIdSet.add(opp.AccountId);
-                } else if (Trigger.oldMap.get(opp.Id).get('AccountId') != null) {
-                    accIdSet.add((Id) Trigger.oldMap.get(opp.Id).get('AccountId'));
-                }
+            if (Trigger.isInsert || Trigger.isDelete) {
+                accIdSet.add(opp.AccountId);
+            }
+            if (Trigger.isUpdate && opp.AccountId != Trigger.oldMap.get(opp.Id).get('AccountId')) {
+                accIdSet.add(opp.AccountId);
+                accIdSet.add((Id) Trigger.oldMap.get(opp.Id).get('AccountId'));
             }
         }
+        accIdSet.remove(null);
         if (!accIdSet.isEmpty()) {
             AccountService.rollupOpportunityRandomNumber(accIdSet);
         }
