@@ -21,7 +21,7 @@ public with sharing class OpportunityService {
     public static void pingAccountNumberRollup(Opportunity[] oppList) {
         Set<Id> accIdSet = new Set<Id>();
         for (Opportunity opp : oppList) {
-            if (opp.StageName != 'Closed') continue;
+            if (opp.StageName != 'Closed Won') continue;
             if (Trigger.isInsert || Trigger.isDelete) {
                 accIdSet.add(opp.AccountId);
             }
@@ -29,6 +29,7 @@ public with sharing class OpportunityService {
                 && (
                     opp.AccountId != Trigger.oldMap.get(opp.Id).get('AccountId')
                     || opp.StageName != Trigger.oldMap.get(opp.Id).get('StageName')
+                    || opp.Random_Number__c != Trigger.oldMap.get(opp.Id).get('Random_Number__c')
                     )
                 ) {
                 accIdSet.add(opp.AccountId);

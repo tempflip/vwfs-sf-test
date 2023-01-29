@@ -4,10 +4,10 @@ public with sharing class AccountServiceTest {
     public static void calculateAvg_insert_happy1() {
         Account a = new Account(Name = 'x');
         insert a;
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
-        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 20);
 
@@ -24,7 +24,7 @@ public with sharing class AccountServiceTest {
     public static void calculateAvg_insert_happy11() {
         Account a = new Account(Name = 'x');
         insert a;
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
         Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'New', CloseDate = Date.today().addDays(100),
@@ -37,7 +37,7 @@ public with sharing class AccountServiceTest {
         system.assertEquals(10, [SELECT Average_Random_Number__c FROM Account WHERE Id = :a.Id].Average_Random_Number__c);
         insert opp2;
         system.assertEquals(10, [SELECT Average_Random_Number__c FROM Account WHERE Id = :a.Id].Average_Random_Number__c);
-        opp2.StageName = 'Closed';
+        opp2.StageName = 'Closed Won';
         update opp2;
         system.assertEquals(15, [SELECT Average_Random_Number__c FROM Account WHERE Id = :a.Id].Average_Random_Number__c);
         system.assertEquals(0, [SELECT Id FROM Event].size());
@@ -47,14 +47,14 @@ public with sharing class AccountServiceTest {
     public static void calculateAvg_insert_happy2() {
         Account a = new Account(Name = 'x');
         insert a;
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
         Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'New', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 20);
 
-        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 22);
 
@@ -72,14 +72,14 @@ public with sharing class AccountServiceTest {
     public static void calculateAvg_insert_happy3() {
         Account a = new Account(Name = 'x');
         insert a;
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
         Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'New', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 20);
 
-        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 89);
 
@@ -95,14 +95,14 @@ public with sharing class AccountServiceTest {
         Account a2 = new Account(Name = 'x');
         insert a2;
 
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
-        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 20);
 
-        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a2.Id,
                                         Random_Number__c = 50);
 
@@ -125,14 +125,14 @@ public with sharing class AccountServiceTest {
         Account a2 = new Account(Name = 'x');
         insert a2;
 
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
-        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 20);
 
-        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a2.Id,
                                         Random_Number__c = 50);
 
@@ -157,14 +157,14 @@ public with sharing class AccountServiceTest {
         Account a2 = new Account(Name = 'x');
         insert a2;
 
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
-        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 20);
 
-        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a2.Id,
                                         Random_Number__c = 50);
 
@@ -187,14 +187,14 @@ public with sharing class AccountServiceTest {
         Account a2 = new Account(Name = 'x');
         insert a2;
 
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
-        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 20);
 
-        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp3 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a2.Id,
                                         Random_Number__c = 50);
 
@@ -212,10 +212,10 @@ public with sharing class AccountServiceTest {
     public static void calculateAvg_account_change() {
         Account a = new Account(Name = 'x');
         insert a;
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 10);
-        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 20);
         
@@ -230,10 +230,10 @@ public with sharing class AccountServiceTest {
     public static void calculateAvg_insert_createEvent_happ1() {
         Account a = new Account(Name = 'x');
         insert a;
-        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp1= new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 50);
-        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed', CloseDate = Date.today().addDays(100),
+        Opportunity opp2 = new Opportunity(Name = 'hello', StageName = 'Closed Won', CloseDate = Date.today().addDays(100),
                                         AccountId = a.Id,
                                         Random_Number__c = 70);
 

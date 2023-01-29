@@ -16,7 +16,7 @@ public with sharing class AccountService {
         Map<Id, Account> toUpdate = new Map<Id, Account>();
         AggregateResult[] oppAggr = [SELECT AccountId, AVG(Random_Number__c)
                                 FROM Opportunity
-                                WHERE StageName = 'Closed'
+                                WHERE StageName = 'Closed Won'
                                 AND AccountId IN :accIdSet
                                 GROUP BY AccountId
                                 ];
