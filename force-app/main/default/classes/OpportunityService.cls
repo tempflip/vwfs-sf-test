@@ -21,10 +21,16 @@ public with sharing class OpportunityService {
     public static void pingAccountNumberRollup(Opportunity[] oppList) {
         Set<Id> accIdSet = new Set<Id>();
         for (Opportunity opp : oppList) {
+            if (opp.StageName != 'Closed') continue;
             if (Trigger.isInsert || Trigger.isDelete) {
                 accIdSet.add(opp.AccountId);
             }
-            if (Trigger.isUpdate && opp.AccountId != Trigger.oldMap.get(opp.Id).get('AccountId')) {
+            if (Trigger.isUpdate 
+                && (
+                    opp.AccountId != Trigger.oldMap.get(opp.Id).get('AccountId')
+                    || opp.StageName != Trigger.oldMap.get(opp.Id).get('StageName')
+                    )
+                ) {
                 accIdSet.add(opp.AccountId);
                 accIdSet.add((Id) Trigger.oldMap.get(opp.Id).get('AccountId'));
             }
